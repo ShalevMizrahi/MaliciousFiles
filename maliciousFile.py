@@ -23,21 +23,8 @@ def analyse(url, headers, fileID):
         status = result.get("data").get("attributes").get("status")
         if status == "completed":
             stats = result.get("data").get("attributes").get("stats")
-            results = result.get("data").get("attributes").get("results")
             print ("malicious: " + str(stats.get("malicious")))
             print ("undetected : " + str(stats.get("undetected")))
-            print ()
-            for k in results:
-                if results[k].get("category") == "malicious":
-                    print ("==================================================")
-                    print (results[k].get("engine_name"))
-                    print ("version : " + results[k].get("engine_version"))
-                    print ("category : " + results[k].get("category"))
-                    print ("result : " + results[k].get("result"))
-                    print ("method : " + results[k].get("method"))
-                    print ("update : " + results[k].get("engine_update"))
-                    print ("==================================================")
-                    print ()
             print ("successfully analyse: OK")
     else:
         print ("failed to get results of analysis :(")
